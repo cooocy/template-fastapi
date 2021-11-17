@@ -9,6 +9,10 @@ def setup(app):
 
     @app.get('/health/error', summary='Throw error.')
     def health_error(m: Optional[str] = ''):
+        """
+        `m`: **optional**, string \n
+        """
+
         if m == '':
             raise BizException(CodeAndMessage.args_error_code, '[m] can not be blank!')
         else:
