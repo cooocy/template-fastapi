@@ -1,0 +1,5 @@
+###
+GET localhost:8080/health/check
+
+###
+GET localhost:8080/health/error?m=python

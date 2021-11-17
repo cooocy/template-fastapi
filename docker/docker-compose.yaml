@@ -1,0 +1,11 @@
+version: "3.5"
+services:
+  t-fastapi:
+    image: t-fastapi:latest
+    privileged: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/log/t-fastapi:/workspace/logs
+    environment:
+      - LANG=en_US.UTF-8
