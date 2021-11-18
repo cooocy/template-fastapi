@@ -1,10 +1,6 @@
 class Result:
     @staticmethod
-    def ok():
-        return {'success': True, 'code': 0, 'message': None, 'data': None}
-
-    @staticmethod
-    def ok(data):
+    def ok(data=None):
         return {'success': True, 'code': 0, 'message': None, 'data': data}
 
     @staticmethod
