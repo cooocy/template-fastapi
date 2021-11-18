@@ -6,9 +6,8 @@ import uvicorn
 
 from about_response import BizException, Result
 from controller import health_controller
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from starlette.responses import JSONResponse
-from urllib.request import Request
 
 
 def register_exception(app: FastAPI):
@@ -30,7 +29,7 @@ async def log_and_add_request_id(request: Request, call_next):
 
     micro_duration = int(round((time.time() - begin_time) * 1000000))
 
-    logger_factory.logger.info('[] access. request-id: {}, uri: {}, duration: {}', request_id, request.url.path,
+    logger_factory.logger.info('[] access. request-id: {}, path: {}, duration: {}', request_id, request.url.path,
                                micro_duration)
     return response
 
