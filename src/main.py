@@ -9,14 +9,12 @@ from controller import health_controller
 from fastapi import FastAPI, Request
 from starlette.responses import JSONResponse
 
-
-def register_exception(app: FastAPI):
-    @app.exception_handler(BizException)
-    async def unicorn_exception_handler(request: Request, exc: BizException):
-        return JSONResponse(status_code=200, content=Result.err(exc.code, exc.message))
-
-
 app = FastAPI(title='Rest API Doc', version='1.0', description='')
+
+
+@app.exception_handler(BizException)
+async def unicorn_exception_handler(request: Request, exc: BizException):
+    return JSONResponse(status_code=200, content=Result.err(exc.code, exc.message))
 
 
 @app.middleware('http')
@@ -33,8 +31,6 @@ async def log_and_add_request_id(request: Request, call_next):
                                micro_duration)
     return response
 
-
-register_exception(app)
 
 health_controller.setup(app)
 
