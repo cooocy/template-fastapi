@@ -22,6 +22,9 @@ async def log_and_add_request_id(request: Request, call_next):
     begin_time = time.time()
 
     request_id = str(uuid.uuid4()).upper()
+    request.state.profile = dict()
+    request.state.profile['request_id'] = request_id
+
     response = await call_next(request)
     response.headers['X-Request-Id'] = request_id
 
