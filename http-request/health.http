@@ -2,4 +2,7 @@
 GET localhost:8080/health/check
 
 ###
+GET localhost:8080/health/biz-error?m=python
+
+###
 GET localhost:8080/health/error?m=python

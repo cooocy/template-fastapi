@@ -17,3 +17,5 @@ class BizException(Exception):
 class CodeAndMessage:
     args_error_code = 1
     args_error_msg = 'args error'
+
+    server_error_code = 100
